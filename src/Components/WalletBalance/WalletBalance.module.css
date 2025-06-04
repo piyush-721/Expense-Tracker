@@ -1,0 +1,104 @@
+.card {
+  width: 270px;
+  height: 140px;
+  border-radius: 15px;
+  background-color: var(--card-bg-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.balance {
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.button {
+  margin-top: 20px;
+  width: 167.65px;
+  height: 38px;
+  border-radius: 15px;
+  background: var(--wallet-button-gradient);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.amount {
+  margin-left: 10px;
+  color: #9dff5c;
+  font-weight: bold;
+}
+
+.dialogTitle {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
+}
+
+
+.dialogContent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.input input {
+  background-color: var(--input-bg-color);
+  color: var(--input-text-color);
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.input .MuiOutlinedInput-root {
+  border-radius: 15px;
+  background-color: var(--input-bg-color);
+  color: var(--input-text-color);
+}
+
+.noOutline {
+  border: none !important;
+}
+
+.addButton {
+  height: 40px;
+  background-color: var(--add-btn-bg);
+  color: var(--add-btn-text);
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+.addButton:hover {
+  background-color: #e0a73c;
+}
+
+.cancelButton {
+  height: 40px;
+  background-color: var(--cancel-btn-bg);
+  color: var(--cancel-btn-text);
+  border: none;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+.cancelButton:hover {
+  background-color: #c0c0c0;
+}

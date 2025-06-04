@@ -1,0 +1,76 @@
+.card {
+  width: 270px;
+  height: 140px;
+  border-radius: 15px;
+  background-color: var(--card-bg-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.expense {
+  font-family: Ubuntu;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.amount {
+  margin-left: 10px;
+  color: #f5bc49;
+  font-weight: bold;
+}
+
+.button {
+  margin-top: 20px;
+  width: 167.65px;
+  height: 38px;
+  border-radius: 15px;
+  background: var(--expense-button-gradient);
+  color: var(--text-color);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialogTitle {
+  font-family: Ubuntu;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.line {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.addButton,
+.cancelButton {
+  width: 180px;
+  height: 38px;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+.addButton {
+  background-color: var(--add-btn-bg);
+  color: var(--add-btn-text);
+}
+
+.cancelButton {
+  background-color: var(--cancel-btn-bg);
+  color: var(--cancel-btn-text);
+}
