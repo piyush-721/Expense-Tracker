@@ -86,6 +86,7 @@ export default function ExpenseForm({
         <Box className={styles.line}>
           <TextField
             sx={commonSx}
+            name="title"
             placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -94,6 +95,7 @@ export default function ExpenseForm({
           />
           <TextField
             sx={commonSx}
+            name="price"
             placeholder="Price"
             type="number"
             value={price}
@@ -105,6 +107,7 @@ export default function ExpenseForm({
         <Box className={styles.line} style={{ marginTop: "10px" }}>
           <TextField
             sx={commonSx}
+            name="category"
             select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
@@ -127,6 +130,7 @@ export default function ExpenseForm({
           <TextField
             sx={commonSx}
             type="date"
+            name="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
             InputLabelProps={{ shrink: true }}

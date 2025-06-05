@@ -71,10 +71,10 @@ export default function WalletBalance() {
                 },
               }}
             />
-            <button type="button" className={styles.addButton} onClick={handleAddBalance}>
+            <button type="submit" className={styles.addButton} onClick={handleAddBalance}>
               Add Balance
             </button>
-            <button className={styles.cancelButton} onClick={handleClose}>
+            <button type="button" className={styles.cancelButton} onClick={handleClose}>
               Cancel
             </button>
           </Box>
