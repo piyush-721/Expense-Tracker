@@ -105,3 +105,14 @@
 .cancelButton:hover {
   background-color: #c0c0c0;
 }
+
+
+@media (max-width: 768px) {
+  .dialogContent{
+    display: flex;;
+    flex-direction: column;
+  }
+  .dialogTitle{
+    text-align: center;
+  }
+}

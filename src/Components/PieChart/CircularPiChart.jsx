@@ -1,5 +1,5 @@
-import React, { PureComponent } from 'react';
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from 'recharts';
+import React from 'react';
+import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { useExpenses } from '../../Contexts/ExpenseContext';
 
 const COLORS = ['#FF9304', '#A000FF', '#FDE006'];
@@ -17,76 +17,100 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-function categoryData(expenses){
+function categoryData(expenses) {
   const categoryTotals = expenses.reduce((acc, curr) => {
-    const {category, price} = curr;
+    const { category, price } = curr;
     acc[category] = (acc[category] || 0) + parseFloat(price);
     return acc;
   }, {});
 
-  return Object.entries(categoryTotals).map(([name, value]) => ({name, value}));
+  return Object.entries(categoryTotals).map(([name, value]) => ({ name, value }));
 }
 
 export default function CircularPiChart() {
-
-  const {expenses, setExpenses} = useExpenses();
-
+  const { expenses } = useExpenses();
   const data = categoryData(expenses);
 
- return (
-    <div style={{ width: '25%', height: 145 }}>
-      <ResponsiveContainer>
-        <PieChart>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={70}
-            fill="#8884d8"
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-        </PieChart>
-      </ResponsiveContainer>
+  return (
+    <div
+      style={{
+        width: '100%',
+        maxWidth: '300px',
+        height: 'auto',
+        margin: '0 auto',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <div style={{ width: '100%', height: 145 }}>
+        <ResponsiveContainer width="100%" height="100%">
+          <PieChart>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={70}
+              fill="#8884d8"
+              dataKey="value"
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              ))}
+            </Pie>
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
 
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
-        <p style={{ display: "flex", alignItems: "center", gap: "6px", color:"#FFFFFF" }}>
-          <span style={{
-            width: '20px',
-            height: '10px',
-            backgroundColor: '#A000FF',
-            borderRadius: '2px',
-            display: 'inline-block'
-          }}></span>
+      {/* Legend - HORIZONTAL */}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          gap: '8px',
+          width: '100%',
+          marginTop: '12px',
+        }}
+      >
+        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '0.85rem' }}>
+          <span
+            style={{
+              width: '20px',
+              height: '10px',
+              backgroundColor: '#A000FF',
+              borderRadius: '2px',
+              display: 'inline-block',
+            }}
+          ></span>
           Food
         </p>
-        <p style={{ display: "flex", alignItems: "center", gap: "6px", color:"#FFFFFF" }}>
-          <span style={{
-            width: '20px',
-            height: '10px',
-            backgroundColor: '#FF9304',
-            borderRadius: '2px',
-            display: 'inline-block'
-          }}></span>
+        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '0.85rem' }}>
+          <span
+            style={{
+              width: '20px',
+              height: '10px',
+              backgroundColor: '#FF9304',
+              borderRadius: '2px',
+              display: 'inline-block',
+            }}
+          ></span>
           Entertainment
         </p>
-        <p style={{ display: "flex", alignItems: "center", gap: "6px", color:"#FFFFFF" }}>
-          <span style={{
-            width: '20px',
-            height: '10px',
-            backgroundColor: '#FDE006',
-            borderRadius: '2px',
-            display: 'inline-block'
-          }}></span>
+        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '0.85rem' }}>
+          <span
+            style={{
+              width: '20px',
+              height: '10px',
+              backgroundColor: '#FDE006',
+              borderRadius: '2px',
+              display: 'inline-block',
+            }}
+          ></span>
           Travel
         </p>
       </div>
-
     </div>
   );
 }

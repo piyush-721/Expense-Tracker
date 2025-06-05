@@ -77,3 +77,9 @@
   background-color: var(--cancel-btn-bg);
   color: var(--cancel-btn-text);
 }
+
+@media (max-width: 768px) {
+  .dialogTitle{
+    text-align: center;
+  }
+}

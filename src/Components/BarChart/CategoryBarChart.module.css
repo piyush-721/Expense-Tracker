@@ -1,0 +1,17 @@
+.chartContainer {
+  width: 32%;
+  height: 220px;
+  background-color: #ffffff;
+  padding: 0 10px;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .chartContainer {
+    width: 60%;
+    height: auto;
+    padding: 10px;
+    margin-top: 20px;
+  }
+}

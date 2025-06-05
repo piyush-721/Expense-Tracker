@@ -21,7 +21,7 @@ export default function ExpenseForm({
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
 
-  // reset every time form opens
+  // reset every time the form opens
   useEffect(() => {
     if (open) {
       setTitle("");
