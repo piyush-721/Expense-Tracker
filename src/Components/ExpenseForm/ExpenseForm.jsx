@@ -4,7 +4,6 @@ import {
   DialogTitle,
   DialogContent,
   TextField,
-  MenuItem,
   Box,
 } from "@mui/material";
 
@@ -21,7 +20,6 @@ export default function ExpenseForm({
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
 
-  // reset every time the form opens
   useEffect(() => {
     if (open) {
       setTitle("");
@@ -38,7 +36,7 @@ export default function ExpenseForm({
     }
 
     const expense = {
-      id: isEdit ? Date.now() : Date.now(), 
+      id: Date.now(),
       title,
       price: parseFloat(price),
       category,
@@ -57,106 +55,86 @@ export default function ExpenseForm({
       borderRadius: "15px",
       "& fieldset": { border: "none" },
       "& input": { color: "var(--input-text-color)" },
-      "& select": {
-        color: category ? "var(--input-text-color)" : "#999",
-      },
     },
     "& .MuiInputBase-input": { color: "var(--input-text-color)" },
     "& .MuiInputLabel-root": { color: "var(--input-text-color)" },
   };
 
   return (
-<Dialog
-  open={open}
-  onClose={handleClose}
-  slotProps={{
-    paper: {
-      sx: {
-        backgroundColor: "var(--modal-bg-color)",
-        padding: "20px",
-        borderRadius: "15px",
-      },
-    },
-  }}
->
-  <DialogTitle className={styles.dialogTitle}>
-    {isEdit ? "Edit Expense" : "Add Expense"}
-  </DialogTitle>
-  <DialogContent>
-    <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
-      <Box className={styles.line}>
-        <TextField
-          sx={commonSx}
-          name="title"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          variant="outlined"
-          size="small"
-        />
-        <TextField
-          sx={commonSx}
-          name="price"
-          placeholder="Price"
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          variant="outlined"
-          size="small"
-        />
-      </Box>
-      <Box className={styles.line} style={{ marginTop: "10px" }}>
-        <TextField
-          sx={commonSx}
-          name="category"
-          select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          displayEmpty
-          variant="outlined"
-          size="small"
-          SelectProps={{
-            displayEmpty: true,
-            renderValue: (selected) =>
-              selected ? selected : <span style={{ color: "#999" }}>Select Category</span>,
-          }}
-        >
-          <MenuItem disabled value="">
-            Select Category
-          </MenuItem>
-          <MenuItem value="Food">Food</MenuItem>
-          <MenuItem value="Entertainment">Entertainment</MenuItem>
-          <MenuItem value="Travel">Travel</MenuItem>
-        </TextField>
-        <TextField
-          sx={commonSx}
-          name="date"
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
-          InputLabelProps={{ shrink: true }}
-          variant="outlined"
-          size="small"
-        />
-      </Box>
-      <Box className={styles.line} style={{ marginTop: "20px" }}>
-        <button
-          type="submit" // ✅ Native submit button
-          className={styles.addButton}
-        >
-          Add Expense
-        </button>
-        <button
-          type="button"
-          className={styles.cancelButton}
-          onClick={handleClose}
-        >
-          Cancel
-        </button>
-      </Box>
-    </form>
-  </DialogContent>
-</Dialog>
+    <Dialog
+      open={open}
+      onClose={handleClose}
+      slotProps={{
+        paper: {
+          sx: {
+            backgroundColor: "var(--modal-bg-color)",
+            padding: "20px",
+            borderRadius: "15px",
+          },
+        },
+      }}
+    >
+      <DialogTitle className={styles.dialogTitle}>
+        {isEdit ? "Edit Expense" : "Add Expense"}
+      </DialogTitle>
+      <DialogContent>
+        <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+          <Box className={styles.line}>
+            <TextField
+              sx={commonSx}
+              name="title"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              variant="outlined"
+              size="small"
+            />
+            <TextField
+              sx={commonSx}
+              name="price"
+              placeholder="Price"
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              variant="outlined"
+              size="small"
+            />
+          </Box>
+          <Box className={styles.line} style={{ marginTop: "10px" }}>
+            {/* Native select with same look */}
+            <select
+              name="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className={styles.nativeSelect}
+            >
+              <option value="" disabled>Select Category</option>
+              <option value="Food">Food</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Travel">Travel</option>
+            </select>
 
+            <TextField
+              sx={commonSx}
+              name="date"
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              InputLabelProps={{ shrink: true }}
+              variant="outlined"
+              size="small"
+            />
+          </Box>
+          <Box className={styles.line} style={{ marginTop: "20px" }}>
+            <button type="submit" className={styles.addButton}>
+              Add Expense
+            </button>
+            <button type="button" className={styles.cancelButton} onClick={handleClose}>
+              Cancel
+            </button>
+          </Box>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 }

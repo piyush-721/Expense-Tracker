@@ -78,6 +78,26 @@
   color: var(--cancel-btn-text);
 }
 
+
+.nativeSelect {
+  width: 180px;
+  height: 40px;
+  background-color: var(--input-bg-color);
+  border-radius: 15px;
+  border: none;
+  color: var(--input-text-color);
+  padding: 0 12px;
+  font-size: 14px;
+  appearance: none;
+}
+
+.nativeSelect:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(100, 100, 255, 0.3);
+}
+
+
+
 @media (max-width: 768px) {
   .dialogTitle{
     text-align: center;
