@@ -17,5 +17,6 @@
 body {
   background-color: #3B3B3B;
   margin: 0;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu';
+  /* font-size: 22px; */
 }

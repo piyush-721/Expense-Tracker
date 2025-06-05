@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./WalletBalance.module.css";
 import {
   Dialog,
@@ -7,19 +7,13 @@ import {
   TextField,
   Box,
 } from "@mui/material";
+// import { useWallet } from "../../WalletContext";
+import { useWallet } from "../../Contexts/WalletContext";
 
 export default function WalletBalance() {
-  const [open, setOpen] = useState(false);
-  const [income, setIncome] = useState("");
-  const [walletBalance, setWalletBalance] = useState(0);
-
-  // Load balance from localStorage when component mounts
-  useEffect(() => {
-    const storedBalance = parseFloat(localStorage.getItem("walletBalance"));
-    if (!isNaN(storedBalance)) {
-      setWalletBalance(storedBalance);
-    }
-  }, []);
+    const [income, setIncome] = useState("");
+    const [open, setOpen] = useState(false);
+    const { walletBalance, setWalletBalance } = useWallet();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -29,10 +23,9 @@ export default function WalletBalance() {
 
   const handleAddBalance = () => {
     const amount = parseFloat(income);
-    if (!isNaN(amount) && amount > 0) {
+    if (!isNaN(amount) && amount > 0) { 
       const newBalance = walletBalance + amount;
       setWalletBalance(newBalance);
-      localStorage.setItem("walletBalance", newBalance.toString());
     }
     handleClose();
   };
@@ -78,18 +71,10 @@ export default function WalletBalance() {
                 },
               }}
             />
-            <button
-              className={styles.addButton}
-              onClick={handleAddBalance}
-              type="submit"
-            >
+            <button className={styles.addButton} onClick={handleAddBalance}>
               Add Balance
             </button>
-            <button
-              className={styles.cancelButton}
-              onClick={handleClose}
-              type="button"
-            >
+            <button className={styles.cancelButton} onClick={handleClose}>
               Cancel
             </button>
           </Box>
