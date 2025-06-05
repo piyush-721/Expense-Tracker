@@ -67,7 +67,7 @@ export default function ExpenseList() {
 
   return (
     <div>
-      <h1 className={styles.transactionHeading}><em>Recent Transactions</em></h1>
+      <h2 className={styles.transactionHeading}><em>Recent Transactions</em></h2>
     <div className={styles.list}>
       <table style={{ borderCollapse: "collapse", width: "100%" }}>
         <tbody>

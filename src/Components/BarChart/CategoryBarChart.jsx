@@ -30,7 +30,7 @@ export default function CategoryBarChart() {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.topExpenses}><em>Top Expenses</em></h1>
+      <h2 className={styles.topExpenses}><em>Top Expenses</em></h2>
 
       <div className={styles.chartContainer}>
         <ResponsiveContainer width="100%" height={220}>
