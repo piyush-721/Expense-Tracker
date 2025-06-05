@@ -1,6 +1,7 @@
 import React from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { useExpenses } from '../../Contexts/ExpenseContext';
+import styles from './CircularPiChart.module.css';
 
 const COLORS = ['#FF9304', '#A000FF', '#FDE006'];
 
@@ -32,18 +33,8 @@ export default function CircularPiChart() {
   const data = categoryData(expenses);
 
   return (
-    <div
-      style={{
-        width: '100%',
-        maxWidth: '300px',
-        height: 'auto',
-        margin: '0 auto',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
-      <div style={{ width: '100%', height: 180 }}>
+    <div className={styles.container}>
+      <div className={styles.chartWrapper}>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -64,50 +55,17 @@ export default function CircularPiChart() {
         </ResponsiveContainer>
       </div>
 
-      {/* Legend - HORIZONTAL */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          gap: '8px',
-          width: '100%',
-          marginTop: '12px',
-        }}
-      >
-        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '1rem' }}>
-          <span
-            style={{
-              width: '20px',
-              height: '10px',
-              backgroundColor: '#A000FF',
-              borderRadius: '2px',
-              display: 'inline-block',
-            }}
-          ></span>
+      <div className={styles.legend}>
+        <p>
+          <span className={styles.colorBox} style={{ backgroundColor: '#A000FF' }}></span>
           Food
         </p>
-        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '1rem' }}>
-          <span
-            style={{
-              width: '20px',
-              height: '10px',
-              backgroundColor: '#FF9304',
-              borderRadius: '2px',
-              display: 'inline-block',
-            }}
-          ></span>
+        <p>
+          <span className={styles.colorBox} style={{ backgroundColor: '#FF9304' }}></span>
           Entertainment
         </p>
-        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '1rem' }}>
-          <span
-            style={{
-              width: '20px',
-              height: '10px',
-              backgroundColor: '#FDE006',
-              borderRadius: '2px',
-              display: 'inline-block',
-            }}
-          ></span>
+        <p>
+          <span className={styles.colorBox} style={{ backgroundColor: '#FDE006' }}></span>
           Travel
         </p>
       </div>

@@ -2,21 +2,13 @@
   background-color: var(--input-bg-color);
   margin-top: 10px;
   margin-left: 10px;
-  width: 738.3304443359375px;
+  width: 738.33px;
   max-width: 100%;
   height: 300px;
   border-radius: 15px;
-  padding: 20px 15px 15px 15px; 
+  padding: 20px 15px 15px 15px;
   margin-bottom: 0px;
   box-sizing: border-box;
-
-
-  /* width: ;
-height: ;
-top: 440.97px;
-left: 32px;
-border-width: 1px; */
-
 }
 
 .table {
@@ -64,6 +56,7 @@ border-width: 1px; */
   align-items: center;
   justify-content: flex-end;
   flex-wrap: wrap;
+  gap: 10px; /* Added gap */
 }
 
 .price {
@@ -71,6 +64,9 @@ border-width: 1px; */
   margin: 0;
   color: #F4BB4A;
   margin-right: 15px;
+  min-width: unset;      /* removed fixed min-width */
+  flex-shrink: 1;        /* allow shrinking */
+  white-space: nowrap;   /* prevent breaking price text */
 }
 
 .iconButton {
@@ -78,6 +74,7 @@ border-width: 1px; */
   background-color: white;
   padding: 0;
   margin-top: 5px;
+  flex-shrink: 0; /* prevent shrinking of buttons */
 }
 
 .iconImage {
@@ -94,9 +91,6 @@ border-width: 1px; */
   margin-right: 5px;
   border-radius: 50px;
   padding: 5px;
-
-
-
 }
 
 .paginationWrapper {
@@ -168,26 +162,74 @@ border-width: 1px; */
   margin-left: 22px;
 }
 
-/* Responsive for tablets and phones */
+/* Responsive styles below 768px */
 @media (max-width: 768px) {
   .list {
     width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    min-width: 600px; /* Keep your desired min width here */
+    max-width: 800px;
+    margin: 10px auto;
     height: auto;
+    padding: 15px;
+    box-sizing: border-box;
   }
 
-  .price {
-    margin-right: 0;
-    margin-bottom: 5px;
+  .itemDetails {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .textGroup {
+    width: 100%;
   }
 
   .actions {
-    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Align to right */
     gap: 10px;
+    width: 100%;
+  }
+
+  .price {
+    margin: 0;
+    min-width: unset;
+    flex-shrink: 1;
+    white-space: nowrap;
+  }
+
+  .actionCell {
+    text-align: right;
+    width: 100%;
+  }
+
+  .iconButton {
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .iconImage {
+    width: 34px;
+    height: 34px;
+  }
+
+  .iconStyle {
+    width: 34px;
+    height: 34px;
+    font-size: 20px;
+    padding: 4px;
   }
 
   .paginationWrapper {
+    margin-top: 10px;
+    justify-content: center;
+  }
+
+  .pagination {
+    justify-content: center;
+    gap: 6px;
     margin-left: 0;
   }
 
@@ -195,5 +237,29 @@ border-width: 1px; */
     min-width: 28px;
     height: 28px;
     font-size: 12px;
+  }
+
+  .transactionHeading {
+    font-size: 22px;
+    margin-left: 10px;
+  }
+}
+
+/* Responsive styles below 600px: stack price and icons vertically */
+@media (max-width: 600px) {
+  .list {
+    min-width: 400px;
+    width: 90%;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .price {
+    min-width: unset;
+    white-space: nowrap;
   }
 }

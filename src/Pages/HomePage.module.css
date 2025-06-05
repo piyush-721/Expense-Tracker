@@ -1,34 +1,33 @@
 .hero {
   display: flex;
   background-color: var(--hero-bg-color);
-  justify-content: space-evenly;
+  justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  overflow: hidden; 
-  padding-left: 25px;
-  padding-top: 20px;
-  height: 269px;
+  overflow: hidden;
+  padding: 15px 25px;
+  min-height: auto;
+  height: auto;
 }
 
 .header {
   font-family: "Ubuntu";
   font-weight: 400;
-  font-size: 30px;
+  font-size: 32px;
   color: var(--text-color);
-  margin-bottom: 5px;
-  margin-top: 2px;
-
-  width: 251px;
-height: 37px;
-
-
+  margin-top: 3px;
+  margin-bottom: 0px;
+  width: fit-content;
+  height: 37px;
+margin-top: 0px;
 }
 
 .barChart {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap; 
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
   width: 100%;
 }
 
@@ -37,16 +36,20 @@ height: 37px;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    padding-left: 10px;
+    padding-top: 10px;
+    min-height: auto;
   }
 
   .barChart {
     flex-direction: column;
     gap: 20px;
+    width: 100%;
   }
 
   .header {
     font-size: 24px;
-    text-align: center;
+    margin: 10px auto;
   }
 }
 
@@ -57,6 +60,7 @@ height: 37px;
     justify-content: center;
     gap: 25px;
     padding: 20px 10px;
+    min-height: auto;
   }
 
   .barChart {
@@ -64,29 +68,73 @@ height: 37px;
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
+    width: 100%;
+
   }
 
   .header {
     font-size: 28px;
-    text-align: center;
+    margin: 10px auto;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1023px) {
   .hero {
     flex-direction: row;
-    justify-content: space-around;
-    padding: 25px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
+    padding: 25px 20px;
+    min-height: auto;
   }
 
   .barChart {
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 30px;
   }
 
   .header {
     font-size: 29px;
+    margin: 10px auto;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1175px) {
+  .hero {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 25px 20px;
+    min-height: auto;
+  }
+
+  .barChart {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+}
+
+@media (min-width: 1176px) {
+  .hero {
+    min-height: 269px;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .barChart {
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .header {
+    font-size: 30px;
   }
 }
