@@ -66,6 +66,8 @@ export default function ExpenseList() {
   };
 
   return (
+    <div>
+      <h1 className={styles.transactionHeading}><em>Recent Transactions</em></h1>
     <div className={styles.list}>
       <table style={{ borderCollapse: "collapse", width: "100%" }}>
         <tbody>
@@ -140,6 +142,7 @@ export default function ExpenseList() {
         onSave={handleSave}
         isEdit={true} 
       />
+    </div>
     </div>
   );
 }

@@ -43,7 +43,7 @@ export default function CircularPiChart() {
         alignItems: 'center',
       }}
     >
-      <div style={{ width: '100%', height: 145 }}>
+      <div style={{ width: '100%', height: 180 }}>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie
@@ -52,7 +52,7 @@ export default function CircularPiChart() {
               cy="50%"
               labelLine={false}
               label={renderCustomizedLabel}
-              outerRadius={70}
+              outerRadius={80}
               fill="#8884d8"
               dataKey="value"
             >
@@ -74,7 +74,7 @@ export default function CircularPiChart() {
           marginTop: '12px',
         }}
       >
-        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '0.85rem' }}>
+        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '1rem' }}>
           <span
             style={{
               width: '20px',
@@ -86,7 +86,7 @@ export default function CircularPiChart() {
           ></span>
           Food
         </p>
-        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '0.85rem' }}>
+        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '1rem' }}>
           <span
             style={{
               width: '20px',
@@ -98,7 +98,7 @@ export default function CircularPiChart() {
           ></span>
           Entertainment
         </p>
-        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '0.85rem' }}>
+        <p style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '1rem' }}>
           <span
             style={{
               width: '20px',

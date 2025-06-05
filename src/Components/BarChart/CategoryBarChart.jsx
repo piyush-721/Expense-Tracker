@@ -29,31 +29,35 @@ export default function CategoryBarChart() {
   const data = categoryData(expenses);
 
   return (
-    <div className={styles.chartContainer}>
-      <ResponsiveContainer width="100%" height={220}>
-        <BarChart
-          layout="vertical"
-          data={data}
-          margin={{ top: 10, right: 10, left: 40, bottom: 10 }}
-        >
-          <XAxis type="number" axisLine={false} tickLine={false} hide />
-          <YAxis
-            dataKey="name"
-            type="category"
-            axisLine={false}
-            tickLine={false}
-            tick={{ fontSize: 12 }}
-          />
-          <Bar dataKey="value" barSize={20} radius={[0, 20, 20, 0]}>
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${index}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
+    <div className={styles.wrapper}>
+      <h1 className={styles.topExpenses}><em>Top Expenses</em></h1>
+
+      <div className={styles.chartContainer}>
+        <ResponsiveContainer width="100%" height={220}>
+          <BarChart
+            layout="vertical"
+            data={data}
+            margin={{ top: 20, right: 10, left: 30, bottom: 10 }}
+          >
+            <XAxis type="number" axisLine={false} tickLine={false} hide />
+            <YAxis
+              dataKey="name"
+              type="category"
+              axisLine={false}
+              tickLine={false}
+              tick={{ fontSize: 12 }}
+            />
+            <Bar dataKey="value" barSize={22} radius={[0, 20, 20, 0]}>
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Bar>
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }

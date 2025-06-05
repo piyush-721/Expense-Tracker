@@ -1,17 +1,49 @@
 .chartContainer {
-  width: 32%;
-  height: 220px;
+  width: 417px; 
+  height: 300px;
   background-color: #ffffff;
   padding: 0 10px;
   border-radius: 15px;
   margin-top: 10px;
+
+}
+
+.topExpenses {
+  font-family: Ubuntu;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+  margin-bottom: 0px;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.wrapper {
+  width: 32%; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 20px;
 }
 
 @media (max-width: 768px) {
+  .wrapper {
+    width: 60%; 
+    margin-right: 0;
+  }
+
   .chartContainer {
-    width: 60%;
+    width: 100%;
     height: auto;
     padding: 10px;
-    margin-top: 20px;
+    margin-top: 15px;
+  }
+
+  .topExpenses {
+    font-size: 20px;
+    margin-left: 5px;
   }
 }

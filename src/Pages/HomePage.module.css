@@ -7,6 +7,7 @@
   overflow: hidden; 
   padding-left: 25px;
   padding-top: 20px;
+  height: 269px;
 }
 
 .header {
@@ -15,7 +16,12 @@
   font-size: 30px;
   color: var(--text-color);
   margin-bottom: 5px;
-  margin-top: 10px;
+  margin-top: 2px;
+
+  width: 251px;
+height: 37px;
+
+
 }
 
 .barChart {
