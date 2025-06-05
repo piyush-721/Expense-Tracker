@@ -66,95 +66,97 @@ export default function ExpenseForm({
   };
 
   return (
-    <Dialog
-      open={open}
-      onClose={handleClose}
-      slotProps={{
-        paper: {
-          sx: {
-            backgroundColor: "var(--modal-bg-color)",
-            padding: "20px",
-            borderRadius: "15px",
-          },
-        },
-      }}
-    >
-      <DialogTitle className={styles.dialogTitle}>
-        {isEdit ? "Edit Expense" : "Add Expense"}
-      </DialogTitle>
-      <DialogContent>
-        <Box className={styles.line}>
-          <TextField
-            sx={commonSx}
-            name="title"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            variant="outlined"
-            size="small"
-          />
-          <TextField
-            sx={commonSx}
-            name="price"
-            placeholder="Price"
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            variant="outlined"
-            size="small"
-          />
-        </Box>
-        <Box className={styles.line} style={{ marginTop: "10px" }}>
-          <TextField
-            sx={commonSx}
-            name="category"
-            select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            displayEmpty
-            variant="outlined"
-            size="small"
-            SelectProps={{
-              displayEmpty: true,
-              renderValue: (selected) =>
-                selected ? selected : <span style={{ color: "#999" }}>Select Category</span>,
-            }}
-          >
-            <MenuItem disabled value="">
-              Select Category
-            </MenuItem>
-            <MenuItem value="Food">Food</MenuItem>
-            <MenuItem value="Entertainment">Entertainment</MenuItem>
-            <MenuItem value="Travel">Travel</MenuItem>
-          </TextField>
-          <TextField
-            sx={commonSx}
-            type="date"
-            name="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            InputLabelProps={{ shrink: true }}
-            variant="outlined"
-            size="small"
-          />
-        </Box>
-        <Box className={styles.line} style={{ marginTop: "20px" }}>
-          <button
-            type="submit"
-            className={styles.addButton}
-            onClick={handleSubmit}
-          >
-            Add Expense
-          </button>
-          <button
-            type="button"
-            className={styles.cancelButton}
-            onClick={handleClose}
-          >
-            Cancel
-          </button>
-        </Box>
-      </DialogContent>
-    </Dialog>
+<Dialog
+  open={open}
+  onClose={handleClose}
+  slotProps={{
+    paper: {
+      sx: {
+        backgroundColor: "var(--modal-bg-color)",
+        padding: "20px",
+        borderRadius: "15px",
+      },
+    },
+  }}
+>
+  <DialogTitle className={styles.dialogTitle}>
+    {isEdit ? "Edit Expense" : "Add Expense"}
+  </DialogTitle>
+  <DialogContent>
+    <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+      <Box className={styles.line}>
+        <TextField
+          sx={commonSx}
+          name="title"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          variant="outlined"
+          size="small"
+        />
+        <TextField
+          sx={commonSx}
+          name="price"
+          placeholder="Price"
+          type="number"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          variant="outlined"
+          size="small"
+        />
+      </Box>
+      <Box className={styles.line} style={{ marginTop: "10px" }}>
+        <TextField
+          sx={commonSx}
+          name="category"
+          select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          displayEmpty
+          variant="outlined"
+          size="small"
+          SelectProps={{
+            displayEmpty: true,
+            renderValue: (selected) =>
+              selected ? selected : <span style={{ color: "#999" }}>Select Category</span>,
+          }}
+        >
+          <MenuItem disabled value="">
+            Select Category
+          </MenuItem>
+          <MenuItem value="Food">Food</MenuItem>
+          <MenuItem value="Entertainment">Entertainment</MenuItem>
+          <MenuItem value="Travel">Travel</MenuItem>
+        </TextField>
+        <TextField
+          sx={commonSx}
+          name="date"
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          InputLabelProps={{ shrink: true }}
+          variant="outlined"
+          size="small"
+        />
+      </Box>
+      <Box className={styles.line} style={{ marginTop: "20px" }}>
+        <button
+          type="submit" // ✅ Native submit button
+          className={styles.addButton}
+        >
+          Add Expense
+        </button>
+        <button
+          type="button"
+          className={styles.cancelButton}
+          onClick={handleClose}
+        >
+          Cancel
+        </button>
+      </Box>
+    </form>
+  </DialogContent>
+</Dialog>
+
   );
 }
