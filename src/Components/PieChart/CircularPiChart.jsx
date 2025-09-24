@@ -3,7 +3,12 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import { useExpenses } from '../../Contexts/ExpenseContext';
 import styles from './CircularPiChart.module.css';
 
-const COLORS = ['#FF9304', '#A000FF', '#FDE006'];
+// ✅ FIXED: Consistent category-to-color mapping
+const CATEGORY_COLORS = {
+  'Food': '#A000FF',        // Purple
+  'Entertainment': '#FF9304', // Orange  
+  'Travel': '#FDE006'       // Yellow
+};
 
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) => {
@@ -48,7 +53,10 @@ export default function CircularPiChart() {
               dataKey="value"
             >
               {data.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                <Cell 
+                  key={`cell-${index}`} 
+                  fill={CATEGORY_COLORS[entry.name] || '#8884d8'} 
+                />
               ))}
             </Pie>
           </PieChart>

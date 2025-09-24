@@ -12,6 +12,12 @@
   text-align: center;
 }
 
+.selectError {
+  border: 2px solid #ff4444 !important;
+  box-shadow: 0 0 5px rgba(255, 68, 68, 0.3) !important;
+}
+
+
 .expense {
   font-family: "Ubuntu";
   font-size: 22px;

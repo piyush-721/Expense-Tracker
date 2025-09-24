@@ -6,6 +6,7 @@ import {
   TextField,
   Box,
 } from "@mui/material";
+import { useToast } from "../../Contexts/ToastContext";
 
 import styles from "../Expenses/Expenses.module.css";
 
@@ -13,30 +14,42 @@ export default function ExpenseForm({
   open,
   handleClose,
   onSave,
+  initialData = null, // Add this prop
   isEdit = false,
 }) {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
+  const { showToast } = useToast();
 
+  // ✅ FIXED: Handle both new and edit modes
   useEffect(() => {
     if (open) {
-      setTitle("");
-      setPrice("");
-      setCategory("");
-      setDate("");
+      if (isEdit && initialData) {
+        // Populate with existing data for editing
+        setTitle(initialData.title || "");
+        setPrice(initialData.price?.toString() || "");
+        setCategory(initialData.category || "");
+        setDate(initialData.date || "");
+      } else {
+        // Clear for new expense
+        setTitle("");
+        setPrice("");
+        setCategory("");
+        setDate("");
+      }
     }
-  }, [open]);
+  }, [open, isEdit, initialData]);
 
   const handleSubmit = () => {
     if (!title || !price || !category || !date) {
-      alert("Please fill in all fields");
+      showToast("Please fill in all fields", "error"); // ✅ IMPROVED: Use toast instead of alert
       return;
     }
 
     const expense = {
-      id: Date.now(),
+      id: isEdit ? initialData.id : Date.now(), // ✅ FIXED: Keep existing ID when editing
       title,
       price: parseFloat(price),
       category,
@@ -101,7 +114,6 @@ export default function ExpenseForm({
             />
           </Box>
           <Box className={styles.line} style={{ marginTop: "10px" }}>
-            {/* Native select with same look */}
             <select
               name="category"
               value={category}
@@ -127,7 +139,7 @@ export default function ExpenseForm({
           </Box>
           <Box className={styles.line} style={{ marginTop: "20px" }}>
             <button type="submit" className={styles.addButton}>
-              Add Expense
+              {isEdit ? "Update Expense" : "Add Expense"} {/* ✅ IMPROVED: Dynamic button text */}
             </button>
             <button type="button" className={styles.cancelButton} onClick={handleClose}>
               Cancel

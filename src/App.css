@@ -1,0 +1,49 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #3B3B3B;
+}
+
+.app-header {
+  padding: 20px 0 10px 0;
+  text-align: center;
+}
+
+.app-title {
+  font-family: "Ubuntu";
+  font-weight: 400;
+  font-size: 32px;
+  color: var(--text-color);
+  margin: 0;
+  height: 37px;
+}
+
+.app-main {
+  flex: 1;
+  width: 100%;
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .app-title {
+    font-size: 30px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 15px 0 5px 0;
+  }
+  
+  .app-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 22px;
+  }
+}

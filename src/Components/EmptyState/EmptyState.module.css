@@ -1,0 +1,76 @@
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: var(--input-bg-color);
+  border-radius: 15px;
+  margin: 10px auto;
+  width: 100%;
+  max-width: 738px;
+  min-height: 300px;
+  box-sizing: border-box;
+}
+
+.emptyIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.emptyTitle {
+  color: #666;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.emptyMessage {
+  color: #999;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .emptyContainer {
+    padding: 30px 16px;
+    max-width: 90%;
+  }
+  
+  .emptyIcon {
+    font-size: 36px;
+  }
+  
+  .emptyTitle {
+    font-size: 16px;
+  }
+  
+  .emptyMessage {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .emptyContainer {
+    padding: 20px 12px;
+    min-height: 250px;
+  }
+  
+  .emptyIcon {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+  
+  .emptyTitle {
+    font-size: 15px;
+  }
+  
+  .emptyMessage {
+    font-size: 12px;
+  }
+}

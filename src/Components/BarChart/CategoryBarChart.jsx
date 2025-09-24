@@ -10,7 +10,12 @@ import {
 import { useExpenses } from "../../Contexts/ExpenseContext";
 import styles from "./CategoryBarChart.module.css";
 
-const COLORS = ["#8784D2", "#8784D2", "#8784D2"];
+// ✅ FIXED: Same consistent colors as PieChart
+const CATEGORY_COLORS = {
+  'Food': '#A000FF',        // Purple
+  'Entertainment': '#FF9304', // Orange  
+  'Travel': '#FDE006'       // Yellow
+};
 
 function categoryData(expenses) {
   const categoryTotals = expenses.reduce((acc, curr) => {
@@ -18,6 +23,7 @@ function categoryData(expenses) {
     acc[category] = (acc[category] || 0) + parseFloat(price);
     return acc;
   }, {});
+  
   return Object.entries(categoryTotals).map(([name, value]) => ({
     name,
     value,
@@ -51,7 +57,7 @@ export default function CategoryBarChart() {
               {data.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
-                  fill={COLORS[index % COLORS.length]}
+                  fill={CATEGORY_COLORS[entry.name] || '#8884d8'}
                 />
               ))}
             </Bar>

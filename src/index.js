@@ -4,22 +4,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './App';
 import HomePage from './Pages/HomePage';
-// import { WalletProvider } from './WalletContext';
 import { WalletProvider } from './Contexts/WalletContext';
-// import { ExpenseProvider } from './ExpenseContext';
 import { ExpenseProvider } from './Contexts/ExpenseContext';
+import { ToastProvider } from './Contexts/ToastContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ExpenseProvider>
-    <WalletProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage/>} />
-        </Routes> 
-      </BrowserRouter>
-    </WalletProvider>
-  </ExpenseProvider>
+  <ToastProvider>
+    <ExpenseProvider>
+      <WalletProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<HomePage />} />
+            </Route>
+          </Routes> 
+        </BrowserRouter>
+      </WalletProvider>
+    </ExpenseProvider>
+  </ToastProvider>
 );
-
-

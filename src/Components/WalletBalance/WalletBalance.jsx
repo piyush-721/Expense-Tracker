@@ -7,13 +7,14 @@ import {
   TextField,
   Box,
 } from "@mui/material";
-// import { useWallet } from "../../WalletContext";
 import { useWallet } from "../../Contexts/WalletContext";
+import { useToast } from "../../Contexts/ToastContext";
 
 export default function WalletBalance() {
     const [income, setIncome] = useState("");
     const [open, setOpen] = useState(false);
     const { walletBalance, setWalletBalance } = useWallet();
+    const { showToast } = useToast();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -24,8 +25,15 @@ export default function WalletBalance() {
   const handleAddBalance = () => {
     const amount = parseFloat(income);
     if (!isNaN(amount) && amount > 0) { 
-      const newBalance = walletBalance + amount;
-      setWalletBalance(newBalance);
+      try {
+        const newBalance = walletBalance + amount;
+        setWalletBalance(newBalance);
+        showToast(`$${amount.toFixed(2)} added to wallet!`, "success");
+      } catch (error) {
+        showToast("Failed to add balance. Please try again.", "error");
+      }
+    } else {
+      showToast("Please enter a valid amount.", "error");
     }
     handleClose();
   };
@@ -61,6 +69,7 @@ export default function WalletBalance() {
               variant="outlined"
               size="small"
               type="number"
+              inputProps={{ min: "0", step: "0.01" }}
               value={income}
               onChange={(e) => setIncome(e.target.value)}
               className={styles.input}

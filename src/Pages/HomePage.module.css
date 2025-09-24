@@ -1,3 +1,10 @@
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .hero {
   display: flex;
   background-color: var(--hero-bg-color);
@@ -8,18 +15,8 @@
   padding: 15px 25px;
   min-height: auto;
   height: auto;
-}
-
-.header {
-  font-family: "Ubuntu";
-  font-weight: 400;
-  font-size: 32px;
-  color: var(--text-color);
-  margin-top: 3px;
-  margin-bottom: 0px;
-  width: fit-content;
-  height: 37px;
-margin-top: 0px;
+  border-radius: 15px;
+  margin-bottom: 30px;
 }
 
 .barChart {
@@ -31,110 +28,60 @@ margin-top: 0px;
   width: 100%;
 }
 
-@media (max-width: 480px) {
+/* Tablet Styles */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .container {
+    padding: 0 15px;
+  }
+  
   .hero {
+    gap: 25px;
+    padding: 20px 15px;
+  }
+  
+  .barChart {
+    gap: 25px;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 768px) and (min-width: 481px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .hero {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+  }
+  
+  .barChart {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    padding-left: 10px;
-    padding-top: 10px;
-    min-height: auto;
   }
+}
 
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 5px;
+  }
+  
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
   .barChart {
     flex-direction: column;
-    gap: 20px;
-    width: 100%;
-  }
-
-  .header {
-    font-size: 24px;
-    margin: 10px auto;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-  .hero {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    padding: 20px 10px;
-    min-height: auto;
-  }
-
-  .barChart {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    width: 100%;
-
-  }
-
-  .header {
-    font-size: 28px;
-    margin: 10px auto;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1023px) {
-  .hero {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 25px 20px;
-    min-height: auto;
-  }
-
-  .barChart {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-  }
-
-  .header {
-    font-size: 29px;
-    margin: 10px auto;
-  }
-}
-
-@media (min-width: 1024px) and (max-width: 1175px) {
-  .hero {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    padding: 25px 20px;
-    min-height: auto;
-  }
-
-  .barChart {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-  }
-}
-
-@media (min-width: 1176px) {
-  .hero {
-    min-height: 269px;
-    height: auto;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-  }
-
-  .barChart {
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 30px;
-  }
-
-  .header {
-    font-size: 30px;
+    align-items: center;
+    gap: 15px;
   }
 }
